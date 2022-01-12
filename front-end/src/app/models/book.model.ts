@@ -3,6 +3,5 @@ export interface Book {
     author: string;
     publishedDate: string;
     available: boolean;
-    price: number;
     checkOutBy: string;
 }   
