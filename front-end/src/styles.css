@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.picture {
+    background-image: url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm389-a03-mockup_4.jpg?w=1300&dpr=1&fit=default&crop=default&q=80&vib=3&con=3&usm=15&bg=F4F4F3&auto=format&ixlib=js-2.2.1&s=1a10d5c82c7609f2cd36a5dc86659939');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
