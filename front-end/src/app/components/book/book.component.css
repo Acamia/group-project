@@ -11,6 +11,12 @@
   margin-bottom: 10px;
 }
 
+
+
+thead {
+  /* background-color: rgb(136, 134, 134); */
+}
+
 table tr {
   text-align: center;
 }
