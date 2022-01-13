@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { BookComponent } from './components/book/book.component';
 import { TableRowComponent } from './components/table-row/table-row.component';
+import { DeleteAllBooksModalComponent } from './components/delete-all-books-modal/delete-all-books-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     BookComponent,
-    TableRowComponent
+    TableRowComponent,
+    DeleteAllBooksModalComponent
   ],
   imports: [
     BrowserModule,

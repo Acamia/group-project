@@ -13,22 +13,24 @@
                   <label for="author" class="form-label">Author</label>
                   <input type="text" class="form-control" name="author" [(ngModel)]="book.author">
                 </div>
-                <div class="col-4">
-                  <label for="checked" class="form-label">Checked Out By</label>
-                  <input type="email" class="form-control" name="checkOutBy" placeholder="lindo@gmail.com" [(ngModel)]="book.checkOutBy">
-                </div>
+                
                 
                 <div class="col-md-4">
                   <label for="date" class="form-label">Published Date</label>
                   <input type="date" class="form-control" name="publishedDate" [(ngModel)]="book.publishedDate">
                 </div>
 
-                <div class="col-md-4">
-                  <label for="inputState" class="form-label">Status</label>
+                <div class="col-md-4" hidden>
+                  <label for="inputState" class="form-label"></label>
                   <select name="available" class="form-select" [(ngModel)]="book.available">
-                    <option selected>Available</option>
-                    <option>Unavailable</option>
+                    <option selected value="Available">Available</option>
+                    <option value="Unavailable">Unavailable</option>
                   </select>
+                </div>
+
+                <div class="col-4">
+                  <label for="checked" class="form-label">Checked Out By</label>
+                  <input type="string" class="form-control" name="checkOutBy" placeholder="Enter Your Name" [(ngModel)]="book.checkOutBy" autocomplete="off">
                 </div>
         
                 <div class="col-12">

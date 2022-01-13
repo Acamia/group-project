@@ -16,6 +16,11 @@ table tr {
 }
 table td {
   text-align: center;
-  color: blue;
-  font-weight: 600;
+  color: rgb(31, 30, 30);
+  font-weight: 700;
+}
+
+
+.modal-content {
+  background-color: rgb(255, 252, 226);
 }

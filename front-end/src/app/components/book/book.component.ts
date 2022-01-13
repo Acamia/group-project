@@ -9,6 +9,11 @@ import { Book } from 'src/app/models/book.model';
 })
 export class BookComponent implements OnInit {
   books: Book[] = [];
+  bookIds: string[] = [];
+  searchValue: string = '';
+  booksLength: number = this.books.length;
+  noOfBooksIndentifier: string = '';
+  isCurrentBookUpdated: boolean = false;
 
   currentBook: Book = {
     title: '',
@@ -18,17 +23,74 @@ export class BookComponent implements OnInit {
     checkOutBy: '',
   };
 
+  bookToBeUpdated: Book = {
+    _id: '',
+    title: '',
+    author: '',
+    publishedDate: '',
+    available: '',
+    checkOutBy: ''
+  }
+
+  selected: string = ""
+  currentBookId: any = "";
 
   constructor(private bookService: BookServiceService) {}
 
-  getDataAndUpdate() {
-    console.log('clicked');
+  // GET DATA OF THE BOOK TO BE UPDATED
+  getDataAndUpdate(i:any) {
+    this.bookService.get(this.bookIds[i]).subscribe((data) => {
+        this.bookToBeUpdated = data
+
+        if(this.bookToBeUpdated.available.length !== 0){
+          this.currentBookId = this.bookToBeUpdated._id
+        }
+        console.log(this.bookToBeUpdated)
+    })
+
+  }
+
+  // UPDATE THE SELECTED BOOK
+  updateNow(x:string, y: Book) {
+          this.bookService.update(x, y).subscribe((data) => {
+              this.isCurrentBookUpdated = true
+              console.log('book is updated')
+              console.log(data)
+              alert("😁 😊 🙂 Book Updated successfully")
+              location.reload()
+          })
+  }
+
+ // DELETE ALL THE BOOKS
+  deleteBook(i: any){
+      this.bookService.delete(this.bookIds[i]).subscribe(() => {
+        console.log('book is deleted!!!');
+        alert("😁 😊 🙂 you have successfully deleted the book")
+        window.location.reload();
+      })
   }
 
   ngOnInit(): void {
     this.bookService.getAllBooks().subscribe((data) => {
       this.books = data;
-      console.log(this.books);
+      this.books.forEach((book) => {
+        if(book._id){
+          this.bookIds.push(book._id)
+        }   
+      })
+
     });
   }
+
+  searchBooks(title: string){
+
+    this.bookService.findByTitle(title).subscribe((data) => {
+      this.books = data
+      this.noOfBooksIndentifier = this.booksLength.valueOf()  > 1 ? 'Book' : 'Books';
+    })
+
+
+  }
+
+  
 }

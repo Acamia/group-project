@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
     title: '',
     author: '',
     publishedDate: '',
-    available: '',
+    available: 'Available',
     checkOutBy: ''
   }
 
