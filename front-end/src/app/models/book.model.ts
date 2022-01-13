@@ -1,7 +1,8 @@
 export interface Book {
-    title: string;
-    author: string;
-    publishedDate: string;
-    available: boolean;
-    checkOutBy: string;
-}   
+  _id?: string;
+  title: string;
+  author: string;
+  publishedDate: string;
+  available: string;
+  checkOutBy: string;
+}

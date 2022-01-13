@@ -9,11 +9,13 @@ import { Book } from '../../models/book.model'
 })
 export class HomeComponent implements OnInit {
 
+  submitted: boolean = false;
+
   book: Book  = {
     title: '',
     author: '',
     publishedDate: '',
-    available: true,
+    available: '',
     checkOutBy: ''
   }
 
@@ -22,19 +24,20 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveTutorial(): void {
+  saveBook(): void {
     const data = {
       title: this.book.title,
       author: this.book.author,
       publishedDate: this.book.publishedDate,
       available: this.book.available,
-      checkoutby: this.book.checkOutBy
+      checkOutBy: this.book.checkOutBy
     };
 
     this.bookServices.create(data)
       .subscribe({
         next: (res) => {
           console.log(res);
+          this.submitted = true;
           this.book.title
         },
         error: (e) => console.error(e)
@@ -47,7 +50,7 @@ export class HomeComponent implements OnInit {
       title: '',
       author: '',
       publishedDate: '',
-      available: false,
+      available: '',
       checkOutBy: ''
 
     };

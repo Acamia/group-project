@@ -1,0 +1,21 @@
+#table-wrapper {
+  height: 500px;
+  overflow-y: auto;
+}
+
+#search-bar-wrapper {
+  margin: 10px 0;
+}
+
+#search-bar-wrapper input[type="text"] {
+  margin-bottom: 10px;
+}
+
+table tr {
+  text-align: center;
+}
+table td {
+  text-align: center;
+  color: blue;
+  font-weight: 600;
+}
