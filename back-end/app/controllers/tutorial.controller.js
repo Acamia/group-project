@@ -1,5 +1,6 @@
 const db = require("../models");
-const Tutorial = db.tutorials;
+// const Tutorial = db.tutorials;
+const Tutorial = require('../models/lindo.model')
 
 //create and save a new Tutorial
 exports.create = (req, res) => {
@@ -12,8 +13,10 @@ exports.create = (req, res) => {
  //Create a Tutorial
  const tutorial = new Tutorial({
      title: req.body.title,
-     description: req.body.description,
-     published: req.body.published ? req.body.published : false
+     author: req.body.author,
+     publishedDate: req.body.publishedDate,
+     available: req.body.available,
+     checkOutBy: req.body.checkOutBy
  });
   //Save Tutorial in the database
   tutorial
