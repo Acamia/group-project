@@ -54,19 +54,12 @@ export class BookComponent implements OnInit {
   updateNow(x:string, y: Book) {
           this.bookService.update(x, y).subscribe((data) => {
               this.isCurrentBookUpdated = true
-              console.log('book is updated')
-              console.log(data)
-              alert("😁 😊 🙂 Book Updated successfully")
-              location.reload()
           })
   }
 
  // DELETE ALL THE BOOKS
   deleteBook(i: any){
       this.bookService.delete(this.bookIds[i]).subscribe(() => {
-        console.log('book is deleted!!!');
-        alert("😁 😊 🙂 you have successfully deleted the book")
-        window.location.reload();
       })
   }
 
@@ -91,6 +84,10 @@ export class BookComponent implements OnInit {
 
 
   }
+
+  refreshComponent(){
+    window.location.reload();
+ }
 
   
 }

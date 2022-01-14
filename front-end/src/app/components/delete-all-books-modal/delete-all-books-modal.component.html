@@ -2,24 +2,47 @@
     <button class="btn btn-md btn-dark" data-bs-toggle="modal" data-bs-target="#deleteAllBooksModal">Delete All Books</button>
 </div>
 
-<!-- MODAL TO DELETE ALL THE BOOKS -->
 <div class="modal" tabindex="-1" role="dialog" id="deleteAllBooksModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" style="color: red">You are about to delete all books from the system</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            <!-- <span aria-hidden="true">&times;</span> -->
-          </button>
         </div>
         <div class="modal-body">
             <h6>Are you sure about your decision?</h6>
         </div>
 
-        <div class="d-flex justify-content-end align-items-center">
-            <button class="btn btn-md p-2 m-4 mt-1 btn-success" (click)="deleteAllBooks()">Yes</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-secondary" (click)="deleteAllBooks()">Yes</button>
         </div>
         
       </div>
     </div>
   </div>
+
+
+<!-- 
+<div class="d-flex justify-content-end align-items-center m-3">
+  <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Delete All Books
+  </button>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: red">You are about to delete all books from the system</h5>
+      </div>
+      <div class="modal-body">
+        Are you sure about your decision?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" (click)="deleteAllBooks()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div> -->

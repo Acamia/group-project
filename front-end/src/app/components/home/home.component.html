@@ -7,17 +7,17 @@
 
                 <div class="col-md-6">
                   <label for="text" class="form-label">Title</label>
-                  <input type="text" class="form-control" name="title" [(ngModel)]="book.title">
+                  <input type="text" class="form-control" name="title" [(ngModel)]="book.title" #title="ngModel" required>
                 </div>
                 <div class="col-md-6">
                   <label for="author" class="form-label">Author</label>
-                  <input type="text" class="form-control" name="author" [(ngModel)]="book.author">
+                  <input type="text" class="form-control" name="author" [(ngModel)]="book.author" #author="ngModel" required>
                 </div>
                 
                 
                 <div class="col-md-4">
                   <label for="date" class="form-label">Published Date</label>
-                  <input type="date" class="form-control" name="publishedDate" [(ngModel)]="book.publishedDate">
+                  <input type="date" class="form-control" name="publishedDate" [(ngModel)]="book.publishedDate" #publishedDate="ngModel" required>
                 </div>
 
                 <div class="col-md-4" hidden>
@@ -30,11 +30,21 @@
 
                 <div class="col-4">
                   <label for="checked" class="form-label">Checked Out By</label>
-                  <input type="string" class="form-control" name="checkOutBy" placeholder="Enter Your Name" [(ngModel)]="book.checkOutBy" autocomplete="off">
+                  <input 
+                    type="string" 
+                    class="form-control" 
+                    name="checkOutBy" placeholder="Enter Your Name" 
+                    [(ngModel)]="book.checkOutBy" 
+                    autocomplete="off" #checkOutBY="ngModel" required>
                 </div>
         
                 <div class="col-12">
-                  <button type="submit" class="btn btn-secondary" (click)="saveBook()" data-bs-toggle="modal" data-bs-target="#exampleModal">Create</button>
+                  <button type="submit" 
+                  class="btn btn-secondary" 
+                  (click)="saveBook()" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#exampleModal" 
+                  [disabled]="title.invalid || author.invalid || publishedDate.invalid || checkOutBY.invalid">Create</button>
                 </div>
               </form>
         </div>

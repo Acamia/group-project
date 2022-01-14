@@ -58,7 +58,10 @@ export class HomeComponent implements OnInit {
   }
 
   refreshComponent(){
-    this.router.navigate([this.router.url])
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    // this.router.onSameUrlNavigation = 'reload';
+    // this.router.navigate(this.activatedRoute)
+    window.location.reload();
  }
 
 }
