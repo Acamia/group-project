@@ -7,17 +7,17 @@
 
                 <div class="col-md-6">
                   <label for="text" class="form-label">Title</label>
-                  <input type="text" class="form-control" name="title" [(ngModel)]="book.title" required>
+                  <input type="text" class="form-control" name="title" [(ngModel)]="book.title" #title="ngModel" autocomplete="off" required>
                 </div>
                 <div class="col-md-6">
                   <label for="author" class="form-label">Author</label>
-                  <input type="text" class="form-control" name="author" [(ngModel)]="book.author" autocomplete="off" required>
+                  <input type="text" class="form-control" name="author" [(ngModel)]="book.author" #author="ngModel" autocomplete="off" required>
                 </div>
                 
                 
                 <div class="col-md-4">
                   <label for="date" class="form-label">Published Date</label>
-                  <input type="date" class="form-control" name="publishedDate" [(ngModel)]="book.publishedDate" required> 
+                  <input type="date" class="form-control" name="publishedDate" [(ngModel)]="book.publishedDate" #publishedDate="ngModel" autocomplete="off" required>
                 </div>
 
                 <div class="col-md-4" hidden>
@@ -30,11 +30,27 @@
 
                 <div class="col-4">
                   <label for="checked" class="form-label">Checked In By</label>
-                  <input type="string" class="form-control" name="checkOutBy" placeholder="Enter Your Name" [(ngModel)]="book.checkOutBy" autocomplete="off" required>
+                  <input 
+                    type="string" 
+                    class="form-control" 
+                    name="checkOutBy" placeholder="Enter Your Name" 
+                    [(ngModel)]="book.checkOutBy" 
+                    autocomplete="off" #checkOutBY="ngModel" required>
                 </div>
         
                 <div class="col-12">
-                  <button type="submit" class="btn btn-secondary" (click)="saveBook()" data-bs-toggle="modal" data-bs-target="#saveBookModal">Create</button>
+                  <div *ngIf="book.title.slice(0,1) != ' ' && book.author.slice(0,1) != ' ' && book.publishedDate.slice(0,1) != ' ' && book.available.slice(0,1) != ' ' && book.checkOutBy.slice(0,1) != ' '; else showDisabledBtn ">
+                      <button type="submit" 
+                      class="btn btn-secondary" 
+                      (click)="saveBook()" 
+                      data-bs-toggle="modal" 
+                      data-bs-target="#exampleModal" 
+                      [disabled]="title.invalid || author.invalid || publishedDate.invalid || checkOutBY.invalid">Create</button>
+                  </div>
+
+                  <ng-template #showDisabledBtn>
+                      <button class="btn btn-secondary" disabled>Create</button>
+                  </ng-template>
                 </div>
               </form>
         </div>
@@ -42,30 +58,19 @@
 </div>
 </section>
 
-
-
-  <!-- Modal TO CONFIRM SAVE TO DATABASE -->
-  <div class="modal" tabindex="-1" id="saveBookModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Successful update</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>You have successfully Added A book</p>
-            </div>
-            <div class="d-flex justify-content-end align-items-center">
-                <button type="button" class="btn btn-secondary btn-md m-4" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close" (click)="refreshAfterSave()">Ok</button>
-            </div>
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+      </div>
+      <div class="modal-body">
+        Book successfully added
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="refreshComponent()">Ok</button>
+      </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
+</div>

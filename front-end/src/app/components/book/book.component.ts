@@ -60,13 +60,13 @@ export class BookComponent implements OnInit {
  // DELETE ALL THE BOOKS
   deleteBook(i: any){
       this.bookService.delete(this.bookIds[i]).subscribe(() => {
-        console.log('book is deleted!!!');
       })
   }
 
   ngOnInit(): void {
     this.bookService.getAllBooks().subscribe((data) => {
       this.books = data;
+      this.books = this.books.reverse()
       this.books.forEach((book) => {
         if(book._id){
           this.bookIds.push(book._id)
@@ -88,6 +88,10 @@ export class BookComponent implements OnInit {
   refreshAfterBookAction(){
       location.reload() 
   }
+
+  refreshComponent(){
+    window.location.reload();
+ }
 
   
 }
