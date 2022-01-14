@@ -1,4 +1,4 @@
-<section *ngIf="!submitted; else showSuccessMsg">
+<section>
 <div class="container mt-4">
     <div class="card">
         <h5 class="card-header" style="background-color: rgb(0, 0, 0, 0.2);">Add New Book</h5>
@@ -7,30 +7,30 @@
 
                 <div class="col-md-6">
                   <label for="text" class="form-label">Title</label>
-                  <input type="text" class="form-control" name="title" [(ngModel)]="book.title">
+                  <input type="text" class="form-control" name="title" [(ngModel)]="book.title" required>
                 </div>
                 <div class="col-md-6">
                   <label for="author" class="form-label">Author</label>
-                  <input type="text" class="form-control" name="author" [(ngModel)]="book.author">
+                  <input type="text" class="form-control" name="author" [(ngModel)]="book.author" autocomplete="off" required>
                 </div>
                 
                 
                 <div class="col-md-4">
                   <label for="date" class="form-label">Published Date</label>
-                  <input type="date" class="form-control" name="publishedDate" [(ngModel)]="book.publishedDate">
+                  <input type="date" class="form-control" name="publishedDate" [(ngModel)]="book.publishedDate" required> 
                 </div>
 
                 <div class="col-md-4" hidden>
                   <label for="inputState" class="form-label"></label>
-                  <select name="available" class="form-select" [(ngModel)]="book.available">
+                  <select name="available" class="form-select" [(ngModel)]="book.available" required>
                     <option selected value="Available">Available</option>
                     <option value="Unavailable">Unavailable</option>
                   </select>
                 </div>
 
                 <div class="col-4">
-                  <label for="checked" class="form-label">Checked Out By</label>
-                  <input type="string" class="form-control" name="checkOutBy" placeholder="Enter Your Name" [(ngModel)]="book.checkOutBy" autocomplete="off">
+                  <label for="checked" class="form-label">Checked In By</label>
+                  <input type="string" class="form-control" name="checkOutBy" placeholder="Enter Your Name" [(ngModel)]="book.checkOutBy" autocomplete="off" required>
                 </div>
         
                 <div class="col-12">
@@ -42,7 +42,10 @@
 </div>
 </section>
 
-<ng-template #showSuccessMsg>
-  <h1>You have Successfully Added A Book</h1>
-  <a href="/home" class="btn btn-md btn-dark">Go Back</a>
-</ng-template>
+
+
+
+
+
+
+
