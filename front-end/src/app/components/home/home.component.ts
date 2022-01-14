@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BookServiceService } from '../../services/book-service.service'
-import { Book } from '../../models/book.model'
+import { BookServiceService } from '../../services/book-service.service';
+import { Book } from '../../models/book.model';
+import {Router, NavigationEnd,ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
     checkOutBy: ''
   }
 
-  constructor(private bookServices: BookServiceService) { }
+  constructor(private bookServices: BookServiceService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -39,6 +40,7 @@ export class HomeComponent implements OnInit {
           console.log(res);
           this.submitted = true;
           this.book.title
+          // this.refreshComponent();
         },
         error: (e) => console.error(e)
       });
@@ -52,8 +54,11 @@ export class HomeComponent implements OnInit {
       publishedDate: '',
       available: '',
       checkOutBy: ''
-
     };
   }
+
+  refreshComponent(){
+    this.router.navigate([this.router.url])
+ }
 
 }
