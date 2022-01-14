@@ -5,11 +5,9 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 
 const routes: Routes = [
-  { path: 'home',component:HomeComponent},
-  { path: 'book', component: BookComponent},
-  { path: '',redirectTo:'/home',pathMatch:'full'},
-  { path: '**', component:PageNotFoundComponentComponent}
-  
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'book', component: BookComponent }
 ];
 
 @NgModule({

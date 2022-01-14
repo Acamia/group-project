@@ -1,37 +1,84 @@
-<div class="container mt-4">
-    <div class=" mt-4">
-        <div class="title m-2">
-          Books
-          <button class="btn btn-outline-primary m-2" style="float: right;"> Search</button>
-        </div>
-        
-        <div class="card-body">
-            
-            <nav class="navbar navbar-light bg-light">
-                <div class="container-fluid">
+<!-- search field -->
+<div class="container">
+<div id="search-bar-wrapper">
+    <form>
+        <input type="text" class="form-control" placeholder="Search by Title">
+        <button class="btn btn-sm btn-dark">search</button>
+    </form>
+</div>
+<br>
 
-                  <form class="d-flex">
-                      <div class="col">
-                          
-                      </div>
-                    <input class="form-control " type="search" placeholder="Search" aria-label="Search">
-        
-                  </form>
-                </div>
-              
-              </nav>
-              <div class="row" style="text-emphasis-color: blue;"> 
-                  <div class="col" style="text-align: center;"><p class="font-monospace my-4 " style="background-color: rgb(143, 174, 188);"   > TITLE</p></div>
-                  <div class="col"  style="text-align: center;"> <p class="font-monospace my-4 " style="background: darkgrey;"> AUTHOR</p></div>
-                  <div class="col" style="text-align: center;"> <p class="font-monospace my-4 " style="background: chartreuse;"> STATUS</p></div>
-                </div>
-              
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          
-        </div>
-      </div>
-
+<div id="table-wrapper">
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publish Date</th>
+            <th>Availability</th>
+            <th>Checked Out By</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books">
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.publishedDate }}</td>
+            <td>{{ book.available }}</td>
+            <td>{{ book.checkOutBy }}</td>
+            <td>
+                <button class="btn btn-sm btn-warning m-2" data-bs-toggle="modal" data-bs-target="#exampleModal" id={{book._id}} (click)="getDataAndUpdate()">edit</button>
+                <button class="btn btn-sm btn-danger m-2">delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 </div>
 
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" id="exampleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Book</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group m-2">
+                        <input type="text" class="form-control" name="title" placeholder="Book Title" />
+                    </div>
+
+                    <div class="form-group m-2">
+                        <input type="text" class="form-control" name="author" placeholder="Book Author" />
+                    </div>
+
+                    <div class="form-group m-2">
+                        <input type="text" class="form-control" name="publishedDate" placeholder="Date of Publish" />
+                    </div>
+
+                    <div class="form-group m-2">
+                        <select name="available" class="form-control">
+                            <option value="available" class="form-control">available</option>
+                            <option value="unavailable" class="form-control">unavailable</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group m-2">
+                        <input type="text" name="checkOutBy" class="form-control" placeholder="checked out by" />
+                    </div>
+                    <button class="btn btn-md btn-success">update book</button>
+                </form>
+            </div>
+   
+        </div>
+    </div>
+</div>

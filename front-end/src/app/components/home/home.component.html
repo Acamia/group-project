@@ -1,0 +1,46 @@
+<section *ngIf="!submitted; else showSuccessMsg">
+<div class="container mt-4">
+    <div class="card">
+        <h5 class="card-header" style="background-color: rgb(0, 0, 0, 0.2);">Add New Book</h5>
+        <div class="card-body">
+            <form class="row g-3">
+
+                <div class="col-md-6">
+                  <label for="text" class="form-label">Title</label>
+                  <input type="text" class="form-control" name="title" [(ngModel)]="book.title">
+                </div>
+                <div class="col-md-6">
+                  <label for="author" class="form-label">Author</label>
+                  <input type="text" class="form-control" name="author" [(ngModel)]="book.author">
+                </div>
+                <div class="col-4">
+                  <label for="checked" class="form-label">Checked Out By</label>
+                  <input type="email" class="form-control" name="checkOutBy" placeholder="lindo@gmail.com" [(ngModel)]="book.checkOutBy">
+                </div>
+                
+                <div class="col-md-4">
+                  <label for="date" class="form-label">Published Date</label>
+                  <input type="date" class="form-control" name="publishedDate" [(ngModel)]="book.publishedDate">
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputState" class="form-label">Status</label>
+                  <select name="available" class="form-select" [(ngModel)]="book.available">
+                    <option selected>Available</option>
+                    <option>Unavalable</option>
+                  </select>
+                </div>
+        
+                <div class="col-12">
+                  <button type="submit" class="btn btn-secondary" (click)="saveBook()">Create</button>
+                </div>
+              </form>
+        </div>
+</div>
+</div>
+</section>
+
+<ng-template #showSuccessMsg>
+  <h1>You have Successfully Added A Book</h1>
+  <a href="/home" class="btn btn-md btn-dark">Go Back</a>
+</ng-template>
