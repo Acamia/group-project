@@ -41,7 +41,7 @@
             <td>{{ book.checkOutBy }}</td>
             <td>
                 <button class="btn btn-sm btn-warning m-2" data-bs-toggle="modal" data-bs-target="#exampleModal" [id]="bookIds[i]" (click)="getDataAndUpdate(i)">edit</button>
-                <button class="btn btn-sm btn-danger m-2" (click)="deleteBook(i)">delete</button>
+                <button type="button" class="btn btn-sm btn-danger m-2" (click)="deleteBook(i)" data-bs-toggle="modal" data-bs-target="#deleteBookModal">delete</button>
             </td>
         </tr>
         <!-- <app-table-row [booksArray]="books"></app-table-row> -->
@@ -87,13 +87,58 @@
                     <div class="form-group m-3">
                         <input type="text" name="checkOutBy" class="form-control" [(ngModel)]="bookToBeUpdated.checkOutBy" placeholder="checked out by" required />
                     </div>
-                    <button class="btn btn-md btn-success" [id]="currentBookId" (click)="updateNow(currentBookId, bookToBeUpdated)">update book</button>
+                    <button class="btn btn-md btn-success" [id]="currentBookId" (click)="updateNow(currentBookId, bookToBeUpdated)" data-bs-toggle="modal" data-bs-target="#deleteBookModal">update book</button>
                 </form>
             </div>
    
         </div>
     </div>
 </div>
+
+
+
+
+<!-- MODAL TO CONFIRM WHEN DELETING A BOOk  -->
+
+  <!-- Modal -->
+  <div class="modal" tabindex="-1" id="deleteBookModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Success Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>You have successfully deleted a book</p>
+            </div>
+            <div class="d-flex justify-content-end align-items-center">
+                <button type="button" class="btn btn-secondary btn-md m-4" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close" (click)="refreshAfterBookAction()">Ok</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+<!-- MODAL TO CONFIRM WHEN EDITING A BOOk  -->
+
+  <!-- Modal -->
+  <div class="modal" tabindex="-1" id="editBookModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Successful update</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>You have successfully update book information</p>
+            </div>
+            <div class="d-flex justify-content-end align-items-center">
+                <button type="button" class="btn btn-secondary btn-md m-4" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close" (click)="refreshAfterBookAction()">Ok</button>
+            </div>
+        </div>
+    </div>
+  </div>
 
 
 
